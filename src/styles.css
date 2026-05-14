@@ -1,0 +1,138 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-display: "Fraunces", "Cormorant Garamond", ui-serif, Georgia, serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 16px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-blush: var(--blush);
+  --color-peach: var(--peach);
+  --color-rose: var(--rose);
+  --color-gold: var(--gold);
+  --color-lilac: var(--lilac);
+}
+
+:root {
+  --radius: 1rem;
+
+  /* Warm, emotional, premium palette */
+  --background: oklch(0.985 0.012 60);
+  --foreground: oklch(0.27 0.04 25);
+
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.27 0.04 25);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.27 0.04 25);
+
+  --primary: oklch(0.55 0.16 18);            /* warm rose */
+  --primary-foreground: oklch(0.99 0.01 60);
+
+  --secondary: oklch(0.96 0.025 60);
+  --secondary-foreground: oklch(0.3 0.05 25);
+
+  --muted: oklch(0.95 0.02 60);
+  --muted-foreground: oklch(0.5 0.03 30);
+
+  --accent: oklch(0.85 0.09 50);             /* peach */
+  --accent-foreground: oklch(0.27 0.04 25);
+
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.984 0.003 247.858);
+
+  --border: oklch(0.9 0.02 50 / 0.6);
+  --input: oklch(0.9 0.02 50);
+  --ring: oklch(0.7 0.12 25);
+
+  --blush: oklch(0.92 0.05 20);
+  --peach: oklch(0.88 0.08 55);
+  --rose:  oklch(0.72 0.15 15);
+  --gold:  oklch(0.82 0.12 80);
+  --lilac: oklch(0.85 0.06 320);
+
+  /* Signature gradients & shadows */
+  --gradient-aurora: radial-gradient(ellipse at 20% 10%, oklch(0.92 0.07 25 / 0.9), transparent 55%),
+                     radial-gradient(ellipse at 80% 0%, oklch(0.9 0.08 60 / 0.8), transparent 50%),
+                     radial-gradient(ellipse at 50% 100%, oklch(0.88 0.06 320 / 0.75), transparent 60%),
+                     linear-gradient(180deg, oklch(0.985 0.012 60), oklch(0.96 0.03 40));
+  --gradient-warm: linear-gradient(135deg, oklch(0.78 0.14 20), oklch(0.84 0.13 60));
+  --gradient-text: linear-gradient(135deg, oklch(0.55 0.18 18), oklch(0.65 0.16 50));
+
+  --glass-bg: oklch(1 0 0 / 0.55);
+  --glass-border: oklch(1 0 0 / 0.6);
+  --shadow-soft: 0 10px 40px -12px oklch(0.5 0.1 25 / 0.18);
+  --shadow-glow: 0 20px 60px -20px oklch(0.65 0.18 25 / 0.45);
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--gradient-aurora);
+    background-attachment: fixed;
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer utilities {
+  .glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px) saturate(140%);
+    -webkit-backdrop-filter: blur(20px) saturate(140%);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-soft);
+  }
+  .glass-strong {
+    background: oklch(1 0 0 / 0.7);
+    backdrop-filter: blur(28px) saturate(160%);
+    -webkit-backdrop-filter: blur(28px) saturate(160%);
+    border: 1px solid oklch(1 0 0 / 0.7);
+    box-shadow: var(--shadow-glow);
+  }
+  .text-gradient {
+    background: var(--gradient-text);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .bg-gradient-warm { background: var(--gradient-warm); }
+  .shadow-glow { box-shadow: var(--shadow-glow); }
+  .shadow-soft { box-shadow: var(--shadow-soft); }
+}
