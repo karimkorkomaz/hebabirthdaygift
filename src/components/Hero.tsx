@@ -35,7 +35,7 @@ export function Hero({ onOpen }: HeroProps) {
         transition={{ duration: 1, delay: 0.5 }}
         className="relative z-10 mt-6 max-w-xl text-lg text-muted-foreground sm:text-xl"
       >
-        This is one of your birthday gifts, because you mean more than words can say.
+        This is one of your birthday gifts.I got you a special gift that you'll receive on june 16, because you mean more than words can say.
       </motion.p>
 
       <motion.button
